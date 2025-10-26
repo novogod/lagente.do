@@ -1,18 +1,26 @@
 # Docker volumes and data
 docker-compose.override.yml
 
-# WordPress specific
-wp-config-local.php
-wp-content/uploads/
-wp-content/cache/
-wp-content/backup*/
-wp-content/updraft/
-.htaccess
+# WordPress dynamic content (but keep themes, plugins, core files)
+wordpress/wp-content/uploads/
+wordpress/wp-content/cache/
+wordpress/wp-content/backup*/
+wordpress/wp-content/updraft/
+wordpress/wp-content/upgrade/
+wordpress/wp-content/upgrade-temp-backup/
+wordpress/wp-content/boost-cache/
+wordpress/wp-content/endurance-page-cache/
+wordpress/wp-content/ewww/
+wordpress/.htaccess
+
+# WordPress config (may contain sensitive data)
+wordpress/wp-config.php
 
 # Logs
 *.log
-error_log
-debug.log
+wordpress/error_log
+wordpress/debug.log
+wordpress/wp-content/**/error_log
 
 # OS generated files
 .DS_Store
