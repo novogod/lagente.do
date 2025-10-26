@@ -27,6 +27,21 @@ services:
       - db_data:/var/lib/mysql
     restart: unless-stopped
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: lagente-phpmyadmin
+    ports:
+      - "8559:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: root_password
+      MYSQL_ROOT_PASSWORD: root_password
+    depends_on:
+      - db
+    restart: unless-stopped
+
 volumes:
   wordpress_data:
   db_data:

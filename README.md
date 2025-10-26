@@ -7,26 +7,48 @@ An agent-based application with WordPress development environment.
 To run the WordPress development environment:
 
 ```bash
-# Start the WordPress container on localhost:8558
-docker-compose up -d
+# Start all containers (WordPress + MySQL + phpMyAdmin)
+docker compose up -d
 
 # Stop the containers
-docker-compose down
+docker compose down
 
 # Stop and remove all data (clean slate)
-docker-compose down -v
+docker compose down -v
 ```
 
-After running `docker-compose up -d`, WordPress will be available at:
-- **URL**: http://localhost:8558
-- **Database**: MySQL 8.0 (internal to containers)
+## Services
+
+After running `docker compose up -d`, the following services will be available:
+
+- **WordPress**: http://localhost:8558
+  - Main website and admin interface
+  - Database connection pre-configured
+
+- **phpMyAdmin**: http://localhost:8559
+  - Database management interface
+  - Username: `root`
+  - Password: `root_password`
+  - Database: `wordpress`
+
+- **MySQL Database**: 
+  - Internal to containers (port 3306)
+  - Username: `wordpress` / Password: `wordpress_password`
+  - Root access: `root` / `root_password`
 
 ## WordPress Setup
 
 1. Visit http://localhost:8558
-2. Follow the WordPress installation wizard
-3. Use any site name, username, and password you prefer
-4. The database connection is already configured
+2. If this is a fresh installation, follow the WordPress installation wizard
+3. For restored installations, the site should be ready to use
+4. Admin access: http://localhost:8558/wp-admin
+
+## Backup & Restore
+
+The setup includes UpdraftPlus for backup management:
+- Backups are stored in `/wp-content/updraft/`
+- Use phpMyAdmin for direct database access if needed
+- FTP extension is installed for UpdraftPlus functionality
 
 ## Development
 

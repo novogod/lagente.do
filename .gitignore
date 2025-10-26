@@ -1,0 +1,43 @@
+# Docker volumes and data
+docker-compose.override.yml
+
+# WordPress specific
+wp-config-local.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/backup*/
+wp-content/updraft/
+.htaccess
+
+# Logs
+*.log
+error_log
+debug.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment variables
+.env
+.env.local
+
+# Backup files
+*.bak
+*.backup
+*.sql
+
+# Temporary files
+*.tmp
+*.temp
