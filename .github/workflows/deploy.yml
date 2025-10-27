@@ -51,12 +51,15 @@ jobs:
             echo "Importing database..."
             docker exec -i lagente-mysql mysql -u root -proot_password wordpress < docker-data/wordpress-database.sql
             
-            # Update URLs to production
-            docker exec lagente-mysql mysql -u root -proot_password wordpress -e "UPDATE wp_options SET option_value = 'https://lagente.do' WHERE option_name = 'home';"
-            docker exec lagente-mysql mysql -u root -proot_password wordpress -e "UPDATE wp_options SET option_value = 'https://lagente.do' WHERE option_name = 'siteurl';"
-          fi
-          
-          # Show container status
+          # Update URLs to production
+          docker exec lagente-mysql mysql -u root -proot_password wordpress -e "UPDATE wp_options SET option_value = 'https://lagente.do' WHERE option_name = 'home';"
+          docker exec lagente-mysql mysql -u root -proot_password wordpress -e "UPDATE wp_options SET option_value = 'https://lagente.do' WHERE option_name = 'siteurl';"
+        fi
+        
+        # Fix any remaining localhost URLs
+        echo "Fixing localhost URLs in database..."
+        chmod +x fix-urls.sh
+        ./fix-urls.sh          # Show container status
           docker ps
           
           # Test if site is responding
