@@ -3,6 +3,20 @@
 ## Project Overview
 This is the lagente.do project - an agent-based application. This file will be updated as the codebase evolves.
 
+## VPS Access
+- **VPS IP**: 193.43.134.141
+- **SSH Key**: `/Users/andreyprokhorov/ssh/ssh/hostinger_key`
+- **SSH Command**: `ssh -i /Users/andreyprokhorov/ssh/ssh/hostinger_key root@193.43.134.141`
+
+### SSH Session Management
+**IMPORTANT**: When SSH connection times out ("Operation timed out" or "Connection reset"), the session key has expired. 
+
+**Solution**: Use simpler command format without quotes:
+- ❌ **Don't**: `ssh -i key root@ip 'command'`  (can cause timeouts)
+- ✅ **Do**: `ssh -i key root@ip command`  (more reliable)
+
+If timeout persists, it means the SSH session needs to be renewed - wait a moment and retry with the simpler format.
+
 ## Architecture & Structure
 *To be documented as the project structure emerges*
 
