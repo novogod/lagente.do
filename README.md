@@ -98,3 +98,42 @@ This repository includes a complete WordPress installation with:
 - ✅ All installed plugins and their settings
 - ✅ Complete media library and uploads
 - ✅ Database with all posts, pages, and configurations
+
+## 🚀 Production Deployment
+
+Your WordPress site is deployed on VPS 193.43.134.141 and accessible at **https://lagente.do**.
+
+### Automatic GitHub Sync
+
+Every time you push changes to the `main` branch, GitHub Actions will automatically:
+
+1. **Sync Files**: Update all WordPress files on the VPS
+2. **Deploy Containers**: Restart Docker containers with latest changes  
+3. **Update Database**: Import database if needed and configure URLs
+4. **Verify**: Test that the site is accessible
+
+### Manual Deployment
+
+You can also trigger deployment manually:
+- Go to [Actions tab](https://github.com/novogod/lagente.do/actions)
+- Click "Deploy to VPS" workflow
+- Click "Run workflow"
+
+### VPS Container Status
+
+On the VPS, containers are running at:
+- **WordPress**: http://localhost:8558 → https://lagente.do (via nginx)
+- **phpMyAdmin**: http://localhost:8559 (VPS only)
+- **MySQL**: Internal container network
+
+### Local Development Workflow
+
+1. **Edit locally**: Make changes to WordPress files or content
+2. **Commit & Push**: 
+   ```bash
+   git add .
+   git commit -m "Your changes"
+   git push
+   ```
+3. **Auto-Deploy**: GitHub Actions deploys to production automatically
+4. **Verify**: Check https://lagente.do for your changes
